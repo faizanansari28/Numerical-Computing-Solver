@@ -1,0 +1,55 @@
+.chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.carousel { position: relative; height: clamp(420px, 56vh, 520px); margin-top: 26px; perspective: 1400px; overflow: hidden; touch-action: pan-y; user-select: none; }
+.car-track { position: absolute; inset: 0; transform-style: preserve-3d; }
+.car-card { position: absolute; left: 50%; top: 50%; width: clamp(230px, 24vw, 300px); height: clamp(320px, 42vh, 390px); border-radius: 22px; border: 1px solid var(--line-2); background: linear-gradient(165deg, #15151f, #0d0d14); padding: 18px; display: flex; flex-direction: column; cursor: pointer; transition: transform 0.7s cubic-bezier(.22,1,.36,1), opacity 0.5s, filter 0.5s, border-color 0.3s, box-shadow 0.5s; }
+.car-card.center { border-color: rgba(128,85,255,0.6); box-shadow: 0 40px 90px -30px rgba(128,85,255,0.55); }
+.car-card:hover { border-color: rgba(128,85,255,0.85); }
+.car-card.leaving { transform: translate(-50%, -50%) scale(1.5) !important; opacity: 0 !important; transition-duration: 0.5s; }
+.car-art { flex: 1; border-radius: 14px; background: radial-gradient(circle at 50% 40%, rgba(128,85,255,0.16), transparent 70%), #0a0a10; border: 1px solid var(--line); padding: 10px; min-height: 0; }
+.car-meta { display: flex; justify-content: space-between; font-size: 11px; color: var(--dim); margin: 14px 0 6px; letter-spacing: 0.08em; text-transform: uppercase; }
+.car-name { font-size: 21px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; }
+.car-view { position: absolute; inset: 0; border-radius: 22px; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 13px; font-weight: 600; letter-spacing: 0.3em; background: rgba(8,8,12,0.55); backdrop-filter: blur(3px); opacity: 0; transition: opacity 0.3s; }
+.car-card:hover .car-view { opacity: 1; }
+.car-arrow { position: absolute; top: 50%; z-index: 20; width: 46px; height: 46px; margin-top: -23px; border-radius: 50%; border: 1px solid var(--line-2); background: rgba(12,12,20,0.8); color: #fff; display: grid; place-items: center; cursor: pointer; transition: 0.25s; }
+.car-arrow:hover:not(:disabled) { border-color: var(--purple); background: rgba(128,85,255,0.25); }
+.car-arrow:disabled { opacity: 0.25; cursor: default; }
+.car-arrow.left { left: max(14px, 3vw); } .car-arrow.right { right: max(14px, 3vw); }
+.car-caption { text-align: center; max-width: 640px; margin: 10px auto 0; min-height: 150px; }
+.car-caption h2 { font-size: clamp(26px, 3.4vw, 40px); margin: 10px 0 10px; }
+.car-caption p { color: var(--muted); }
+.car-dots { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 16px; }
+.car-dots button { width: 7px; height: 7px; padding: 0; border-radius: 50%; border: none; background: #33333f; cursor: pointer; transition: 0.3s; }
+.car-dots button.on { background: var(--purple); width: 22px; border-radius: 4px; }
+@media (max-width: 700px) { .car-card { width: 220px; } .car-arrow { display: none; } }
+
+/* ---- method detail ---- */
+.md-layout { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 54px; align-items: start; }
+.md-side { position: sticky; top: calc(var(--nav-h) + 30px); display: flex; flex-direction: column; gap: 2px; }
+.md-side a { font-size: 13px; color: var(--muted); padding: 8px 12px; border-left: 2px solid var(--line); transition: 0.25s; display: flex; gap: 10px; }
+.md-side a b { color: var(--dim); font-family: var(--mono); font-weight: 500; }
+.md-side a:hover, .md-side a.on { color: #fff; border-left-color: var(--purple); background: linear-gradient(90deg, rgba(128,85,255,0.12), transparent); }
+.md-sec { padding: 0 0 70px; scroll-margin-top: calc(var(--nav-h) + 20px); }
+.md-sec h2 { font-size: clamp(24px, 2.6vw, 32px); margin: 8px 0 22px; display: flex; align-items: baseline; gap: 14px; }
+.md-sec h2 .mono { font-size: 13px; color: var(--purple); }
+.md-sec p { color: #cfcfda; margin: 0 0 12px; max-width: 760px; }
+.qa { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.qa > div { border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; background: var(--panel); }
+.qa h4 { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--purple); margin: 0 0 8px; }
+.qa p { margin: 0; font-size: 14px; }
+.vars { display: grid; gap: 8px; margin-top: 16px; }
+.vars div { display: grid; grid-template-columns: 120px 1fr; gap: 14px; align-items: center; font-size: 14px; color: var(--muted); padding: 8px 0; border-bottom: 1px solid var(--line); }
+.two { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.two ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.two li { font-size: 14px; color: #cfcfda; display: flex; gap: 10px; }
+.two .pro li::before { content: "+"; color: #5eead4; font-weight: 700; } .two .con li::before { content: "−"; color: #f87171; font-weight: 700; }
+.two > div { border: 1px solid var(--line); border-radius: 16px; padding: 20px; background: var(--panel); }
+.two h4 { margin: 0 0 14px; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; }
+.rel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+.rel { border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; transition: 0.3s; display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+.rel:hover { border-color: var(--purple); transform: translateY(-3px); background: rgba(128,85,255,0.07); }
+.rel small { display: block; color: var(--dim); font-size: 11px; margin-top: 3px; }
+.pager { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 26px; }
+.params-line { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+.params-line span { font-family: var(--mono); font-size: 12px; padding: 5px 10px; border: 1px solid var(--line); border-radius: 8px; color: var(--muted); }
+.params-line b { color: #fff; font-weight: 500; white-space: pre-wrap; }
+@media (max-width: 960px) { .md-layout { grid-template-columns: 1fr; } .md-side { display: none; } .qa, .two { grid-template-columns: 1fr; } }
